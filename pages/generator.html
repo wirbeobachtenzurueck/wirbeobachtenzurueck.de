@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antragsgenerator</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <script type="module" src="../scripts/js/pdf.js"></script>
+    <link rel="icon" href="../media/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../media/favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="/">
+                <img src="../media/wirbeobachten-logo-2.svg" alt="Wir beobachten zurück Logo">
+            </a>
+        </div>
+        <nav class="buttons-top">
+                <div class="top-button">
+                    <a href="../pages/generator.html" class="generator">Antragsgenerator</a>
+                </div>        
+                <div class="bottom-buttons">
+                        <a href="../pages/faq.html" class="faq">FAQ</a>
+                        <a href="../pages/contact.php" class="contact">Kontakt</a>
+                        <a href="../pages/support.html" class="support">Support</a>
+                </div>       
+        </nav>
+    </header>
+    <div class="content-container">
+        <div class="content-head">
+            <h2>Antragsgenerator</h2>
+		<br>
+            <h5>Bei wirbeobachtenzurueck.de werden keinerlei Daten gespeichert.</br>
+               Für die VS-Recherche nutzen wir nur Daten, <br>die uns freiwillig über das <a href="../pages/contact.php">Kontaktformular</a> mitgeteilt wurden.
+		<p></p>
+		Sie können auch Blankoformulare erstellen, ohne persönliche Daten einzugeben.<br> 
+		Dafür müssen Sie nur (mindestens) ein Amt anwählen.<br>
+            </h5>
+        </div>
+        <br>
+        <form id="aemterForm" onsubmit="return validateForm()">
+                <fieldset id="aemter-box" class="checkbox-group" required>
+                    <legend class="form-label">
+                        Ämter wählen:
+                    </legend>
+			<br>
+                    <div class="aemtergrid">
+		      <div class="column">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="bfv" name="ämterwählen[]" value="Bundesamt für Verfassungsschutz">
+                            <label class="form-check-label" for="bvf">Bundesamt für Verfassungsschutz (BfV)</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="bnd" name="ämterwählen[]" value="Bundesnachrichtendienst">
+                            <label class="form-check-label" for="bnd">Bundesnachrichtendienst (BND)</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_brandenburg" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Brandenburg">
+                            <label class="form-check-label" for="lfv_brandenburg">Landesamt für Verfassungsschutz Brandenburg</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_hamburg" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Hamburg">
+                            <label class="form-check-label" for="lfv_hamburg">Landesamt für Verfassungsschutz Hamburg</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_hessen" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Hessen">
+                            <label class="form-check-label" for="lfv_hessen">Landesamt für Verfassungsschutz Hessen</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_nrw" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Nordrhein-Westfalen">
+                            <label class="form-check-label" for="lfv_nrw">Landesamt für Verfassungsschutz Nordrhein-Westfalen</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_saarland" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Saarland">
+                            <label class="form-check-label" for="lfv_saarland">Landesamt für Verfassungsschutz Saarland</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_sachsenanhalt" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Sachsen-Anhalt">
+                            <label class="form-check-label" for="lfv_sachsenanhalt">Landesamt für Verfassungsschutz Sachsen-Anhalt</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_bayern" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Bayern">
+                            <label class="form-check-label" for="lfv_bayern">Landesamt für Verfassungsschutz Bayern</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_bw" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Baden-Württemberg">
+                            <label class="form-check-label" for="lfv_bw">Landesamt für Verfassungsschutz Baden-Württemberg</label>
+                        </div>
+		      </div>
+		      <div class="column">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="mad" name="ämterwählen[]" value="Militärischer Abschirmdienst (MAD)">
+                            <label class="form-check-label" for="mad">Militärischer Abschirmdienst (MAD)</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_berlin" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Berlin">
+                            <label class="form-check-label" for="lfv_berlin">Landesamt für Verfassungsschutz Berlin</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_bremen" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Bremen">
+                            <label class="form-check-label" for="lfv_bremen">Landesamt für Verfassungsschutz Bremen</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_niedersachsen" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Niedersachsen">
+                            <label class="form-check-label" for="lfv_niedersachsen">Landesamt für Verfassungsschutz Niedersachsen</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_mvp" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Mecklenburg-Vorpommern">
+                            <label class="form-check-label" for="lfv_mvp">Landesamt für Verfassungsschutz Mecklenburg-Vorpommern</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_rlp" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Rheinland-Pfalz">
+                            <label class="form-check-label" for="lfv_rlp">Landesamt für Verfassungsschutz Rheinland-Pfalz</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_sachsen" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Sachsen">
+                            <label class="form-check-label" for="lfv_sachsen">Landesamt für Verfassungsschutz Sachsen</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_sh" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Schleswig-Holstein">
+                            <label class="form-check-label" for="lfv_sh">Landesamt für Verfassungsschutz Schleswig-Holstein</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="lfv_thueringen" name="ämterwählen[]" value="Landesamt für Verfassungsschutz Thüringen">
+                            <label class="form-check-label" for="lfv_thueringen">Landesamt für Verfassungsschutz Thüringen</label>
+                        </div>
+		      </div>
+                    </div>
+                </fieldset>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Emma Mustermann" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="strasse" class="form-label">Straße:</label>
+                    <input type="text" class="form-control" id="strasse" name="strasse" placeholder="Musterstraße 1">
+                </div>
+                <div class="mb-3">
+                    <label for="postleitzahl" class="form-label">Postleitzahl:</label>
+                    <input type="text" class="form-control" id="postleitzahl" name="postleitzahl" placeholder="12345">
+                </div>
+                <div class="mb-3">
+                    <label for="stadt" class="form-label">Stadt:</label>
+                    <input type="text" class="form-control" id="stadt" name="stadt" placeholder="Musterstadt">
+                </div>
+                <div class="mb-3">
+                    <label for="geburtsort" class="form-label">Geburtsort:</label>
+                    <input type="text" class="form-control" id="geburtsort" name="geburtsort" placeholder="Musterstadt">
+                </div>
+                <div class="mb-3" id="geburtsdatum-field">
+		    <label for="geburtsdatum" class="form-label">Geburtsdatum:</label>
+		    <input type="text" 
+		           class="form-control" 
+		           id="geburtsdatum" 
+		           name="geburtsdatum" 
+		           placeholder="01.01.1970"
+		           pattern="\d{2}\.\d{2}\.\d{4}"
+		           inputmode="numeric"
+		           maxlength="10">
+		</div>
+                <div class="mb-3">
+                    <label for="grund" class="form-label">Persönlicher Grund, warum man glaubt, beobachtet zu werden:</label>
+                    <textarea class="form-control" id="grund" name="grund" rows="3" placeholder="Diese Stelle im Formular ist wichtig, sofern eine Antwort bezüglich des eigenen Beobachtungsstatus ohne viel Ping-Pong mit der Behörde erwünscht ist. Erfahrungsgemäß lehnt der Verfassungsschutz Anträge ab, die nicht mindestens einen persönlichen Grund enthalten, warum man glaubt, beobachtet zu werden. Hier empfiehlt es sich, nicht allzu sehr ins Detail zu gehen, weil man der Behörde sonst unnötig weitere Datenpunkte liefert. Formaljuristisch reicht bereits ein Satz wie: &quot;Ich habe an einer regierungskritischen Demonstration teilgenommen&quot; oder &quot;Ich äußere mich regelmäßig regierungskritisch in den sozialen Medien&quot; völlig aus. Im Formular wird auf die Aussagen eines Verfassungsschutz-Whistleblowers verwiesen, der aussagte, bereits Kleinigkeiten könnten bereits zu einer Beobachtung führen. Daher müsste die Behörde auch niedrigschwellige Gründe für ein legitimes Auskunftsinteresse anerkennen."></textarea>
+                </div>
+                <br>
+		<div class="antrag-hinweis"><p>Bitte vergessen Sie nicht, die Anträge zu unterschreiben und eine Personalausweiskopie anzuhängen.<br> 
+		Für einen Nachweis über das Einsendedatum empfiehlt es sich, das Schreiben per Einschreiben zu verschicken.</p>
+		</div>
+                <div class="generatorbuttons">
+		<button type="button" class="btn" id="submit-button">Generieren</button>
+                <button type="reset" class="btn" id="reset-button">Abbrechen</button>
+		<button type="button" class="btn" id="download-button" style="display: none;">Download</button>
+		</div>
+		<br>
+        </form>
+        <div id="alert-container" style="text-align: center; display: none; justify-content: center; align-items: center;">
+            <p id="alert">PDF wird generiert..</p>
+        </div>
+        <div id="pdf-container" class="pdf-container" style="display: none;">
+            <div id="pdf-viewer"></div>
+        </div>
+    </div>
+
+	<footer>
+            <p>
+                <a href="../pages/about.html">Impressum</a>
+                | <a href="../pages/privacypolicy.html">Datenschutz</a>
+                <br>
+                <a href="mailto:kontakt@wirbeobachtenzurueck.de">kontakt@wirbeobachtenzurueck.de</a>
+            </p>
+            <p>© 2024 wirbeobachtenzurueck.de<br><span class="footer-credit">with <span class="heart">❤</span> by Ducky &amp; Loui</span></p>
+        </footer>
+</body>
+</html>
+
+
+
+
